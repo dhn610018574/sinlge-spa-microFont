@@ -40,9 +40,6 @@ singleSpa.registerApplication(
       singleVue = window.singleVue
     })
     return singleVue
-    // await runScript('http://127.0.0.1:3000/js/chunk-vendors.js')
-    // await runScript('http://127.0.0.1:3000/js/app.js')
-    // return window.singleVue
   },
   (location) => location.pathname.startsWith('/vue')
 )
