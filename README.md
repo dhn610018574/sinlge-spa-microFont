@@ -1,4 +1,5 @@
 # 基于 single-spa single-spa-vue 和 vue-cli 的微前端基础
+
 ## 项目技术栈： vue + vuex + vue-router + axios + webpack
 
 ## 完成父项目递归菜单树
@@ -9,28 +10,30 @@ Step 1:
 模拟菜单 list 数据
 完成调试
 
-## Project setup
+## 安装依赖：
 
 ```
-npm install
+npm install | cnpm install | yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 启动本地服务：
+
+## 启动父项目：http://localhost:8080/
 
 ```
-npm run serve
+cd single-spa-vue && yarn install && npm run serve
 ```
 
-### Compiles and minifies for production
+## 启动子项目：http://localhost:3000/
+
+```
+cd app-vue && yarn install && npm run serve
+```
+
+### 打包项目：
 
 ```
 npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
 ```
 
 ### Customize configuration
