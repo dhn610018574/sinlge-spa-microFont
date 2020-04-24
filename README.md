@@ -3,6 +3,7 @@
 
 ## 完成父项目递归菜单树
 
+Step 1:
 在 src/components 文件夹下创建 ReSub 递归菜单树组件
 在 App.vue 文件中引入
 模拟菜单 list 数据
