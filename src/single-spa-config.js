@@ -36,11 +36,22 @@ singleSpa.registerApplication(
   'vue',
   async () => {
     let singleVue = null
-    await getManifest('/app-vue/manifest.json', 'app').then(() => {
+    await getManifest('/appVue/manifest.json', 'app').then(() => {
       singleVue = window.singleVue
     })
     return singleVue
   },
   (location) => location.pathname.startsWith('/vue')
+)
+singleSpa.registerApplication(
+  'react',
+  async () => {
+    let singleReact = null
+    await getManifest('/appReact/manifest.json', 'main').then(() => {
+      singleReact = window.singleReact
+    })
+    return singleReact
+  },
+  (location) => location.pathname.startsWith('/react')
 )
 singleSpa.start()

@@ -1,6 +1,6 @@
 const StatsPlugin = require('stats-webpack-plugin')
 module.exports = {
-  publicPath: '//localhost:3000/',
+  publicPath: '//localhost:4000/',
   css: {
     extract: false,
   },
@@ -12,7 +12,7 @@ module.exports = {
     },
     plugins: [
       // https://www.webpackjs.com/configuration/stats/
-      new StatsPlugin('./app-vue/manifest.json', {
+      new StatsPlugin('./appVue/manifest.json', {
         chunkModules: false,
         entrypoints: true, // 只使用这个字段
         source: false,

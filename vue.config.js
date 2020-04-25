@@ -3,8 +3,13 @@ module.exports = {
     contentBase: './',
     compress: true,
     proxy: {
-      '/app-vue': {
-        target: 'http://127.0.0.1:3000/',
+      '/appVue': {
+        target: 'http://127.0.0.1:4000/',
+        ws: false,
+        changeOrigin: true,
+      },
+      '/appReact': {
+        target: 'http://localhost:3000/',
         ws: false,
         changeOrigin: true,
       },

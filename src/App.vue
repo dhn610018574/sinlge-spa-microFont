@@ -5,10 +5,10 @@
       <a-menu theme="dark" mode="inline" v-if="list.length > 0">
         <template v-for="item in list">
           <a-menu-item v-if="!item.children" :key="item.key">
-            <router-link :to="{ path: item.path }">
+            <a :href="item.path" @click="goToChildRoute">
               <a-icon :type="item.icon"></a-icon>
               {{ item.title }}
-            </router-link>
+            </a>
           </a-menu-item>
           <a-sub-menu v-else :key="item.key">
             <span slot="title"
@@ -16,14 +16,7 @@
               ><span>{{ item.title }}</span></span
             >
             <template v-for="(subMenuItem, SubMenuKey) in item.children">
-              <template v-if="!subMenuItem.children">
-                <a-menu-item :key="SubMenuKey">{{
-                  subMenuItem.title
-                }}</a-menu-item>
-              </template>
-              <template v-else>
-                <ReSub :menuInfo="subMenuItem" :key="SubMenuKey"></ReSub>
-              </template>
+              <ReSub :menuInfo="subMenuItem" :key="SubMenuKey"></ReSub>
             </template>
           </a-sub-menu>
         </template>
@@ -32,6 +25,7 @@
         暂无菜单！
       </div>
     </a-layout-sider>
+    <!-- 页面右侧 -->
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
         <a-icon
@@ -53,12 +47,14 @@
           <div id="single-vue" class="single-spa-vue">
             <div id="vue"></div>
           </div>
+          <div id="react-app"></div>
         </div>
       </a-layout-content>
     </a-layout>
   </a-layout>
 </template>
 <script>
+import { navigateToUrl } from 'single-spa'
 import ReSub from '@/components/ReSub.vue'
 export default {
   components: {
@@ -70,33 +66,33 @@ export default {
       list: [
         {
           key: '1',
-          title: 'Option 1',
+          title: 'Option vue',
           icon: 'home',
-          path: '#/',
+          path: '/vue#/',
         },
         {
           key: '2',
-          title: 'Navigation 2',
+          title: 'Navigation vue',
           icon: 'delete',
-          path: '#/about',
+          path: '/vue#/about',
           children: [
             {
               key: '2.1',
-              title: 'Navigation 3',
+              title: 'Navigation vue',
               icon: 'form',
-              path: '#/home',
+              path: '/vue#/home',
               children: [
                 {
                   key: '2.1.1',
-                  title: 'Option 2.1.1',
+                  title: 'Option react',
                   icon: 'redo',
-                  path: '#/',
+                  path: '/react#/',
                 },
                 {
                   key: '2.1.2',
-                  title: 'Option 2.1.2',
+                  title: 'Option vue',
                   icon: 'redo',
-                  path: '#/about',
+                  path: '/vue#/about',
                 },
               ],
             },
@@ -104,6 +100,13 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    goToChildRoute(e) {
+      // 官方指定跳转
+      e.preventDefault()
+      navigateToUrl(e)
+    },
   },
 }
 </script>
